@@ -5,11 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
 import com.mantap.SpringStarter.models.Account;
-import  com.mantap.SpringStarter.models.Post;
+import com.mantap.SpringStarter.models.Post;
 import com.mantap.SpringStarter.services.AccountService;
-import  com.mantap.SpringStarter.services.PostService;
+import com.mantap.SpringStarter.services.PostService;
+
 
 @Component
 public class SeedData implements CommandLineRunner{
@@ -20,23 +20,26 @@ public class SeedData implements CommandLineRunner{
     @Autowired
     private AccountService accountService;
 
-
     @Override
     public void run(String... args) throws Exception {
-
-        Account account01 = new Account();
-        Account account02 = new Account();
-
-        account01.setEmail("admin@gmail.com");
-        account01.setPassword("12345");
-        account01.setFirstname("user01");
         
-        account02.setEmail("admin@gmail.com");
-        account02.setPassword("12345");
-        account02.setFirstname("user02");
+       Account account01 = new Account();
+       Account account02 = new Account();
 
-        accountService.save(account01);
-        accountService.save(account02);
+       account01.setEmail("account01@studyeasy.org");
+       account01.setPassword("password");
+       account01.setFirstname("user01");
+
+
+       account02.setEmail("account02@studyeasy.org");
+       account02.setPassword("password");
+       account02.setFirstname("user02");
+
+
+       accountService.save(account01);
+       accountService.save(account02);
+       
+
 
        List<Post> posts = postService.getAll();
        if (posts.size() == 0){
@@ -45,8 +48,6 @@ public class SeedData implements CommandLineRunner{
             post01.setBody("Post 01 body.....................");
             post01.setAccount(account01);
             postService.save(post01);
-
-
 
             Post post02 = new Post();
             post02.setTitle("Post 02");
