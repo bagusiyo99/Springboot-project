@@ -11,6 +11,9 @@ import com.mantap.SpringStarter.models.Post;
 import com.mantap.SpringStarter.services.PostService;
 
 
+
+///home
+
 @Controller
 public class HomeController {
     @Autowired
